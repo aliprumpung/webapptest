@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     var url = "/user";
-
+$('#alertwarning').hide();
 
 /*
 ================================================================================
@@ -149,7 +149,8 @@ start modal
             success: function (data) {
  
                if(data.response !== undefined){
-                  alert(data.response);  
+
+                alert(data.response);  
                }else{
                 
                 var res = '<tr id="user' + data.uuid + '"><td>' + data.uuid + '</td><td>' + data.nama + '</td><td>' + data.alamat + '</td><td>' + data.created_at + '</td>';
@@ -284,7 +285,10 @@ start no modal
             dataType: 'json',
             success: function (data) {
              if(data.response !== undefined){
-                  alert(data.response);  
+                $('#alertwarning').html('');
+                $('#alertwarning').append(data.response);
+                $('#alertwarning').show();
+                 alert(data.response);  
                }else{
                     window.location.href = '/user';
                 }

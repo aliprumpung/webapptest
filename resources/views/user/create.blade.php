@@ -4,6 +4,9 @@
 @section('content')
 <div class="container">
   <form id="frmUsers" name="frmUsers" class="form-horizontal" novalidate="">
+    <div class="alert alert-warning" role="alert" id="alertwarning">
+ 
+</div>
     <div class="form-group row">
       {{csrf_field()}}
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">UUID</label>
@@ -19,9 +22,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Alamat</label>
       <div class="col-sm-10">
-        <textarea id="alamat" name="alamat" placeholder="masukkan alamat...." rows="8" cols="80"></textarea>
+        <textarea id="alamat" name="alamat"  rows="8" cols="80"></textarea>
       </div>
     </div>
     <div class="form-group row">
