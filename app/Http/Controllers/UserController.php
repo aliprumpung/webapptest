@@ -21,10 +21,15 @@ class UserController extends Controller
      */
     public function index()
     {
-         $user = User::all();
+        $user = User::paginate(3);
 
-        return View('user.index')->with('users',$user);
+        // return View('user.index')->with('users',$user);
+        return View('user.index',['users'=> $user]);
+          // return response()->json($user); 
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +56,10 @@ class UserController extends Controller
         //validating nama alert if existed
         if (User::where('nama', '=', $request->get('nama'))->exists()) {
             $str = 'nama '.$request->get('nama').' is already existed..';
+            $error = ['response' => $str];
+            return response()->json($error);
+        }else if (User::where('alamat', '=', $request->get('alamat'))->exists()) {
+            $str = 'alamat '.$request->get('alamat').' is already existed..';
             $error = ['response' => $str];
             return response()->json($error);
         }else{

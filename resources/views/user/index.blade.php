@@ -34,22 +34,31 @@
                     </tr>
                 </thead>
                 <tbody id="users-list" name="users-list">
-                    @foreach ($users as $users)
-                    <tr id="user{{$users->uuid}}">
-                        <td>{{$users->uuid}}</td>
-                        <td>{{$users->nama}}</td>
-                        <td>{{$users->alamat}}</td>
+                    @foreach ($users as $user)
+                    <tr id="user{{$user->uuid}}">
+                        <td>{{$user->uuid}}</td>
+                        <td>{{$user->nama}}</td>
+                        <td>{{$user->alamat}}</td>
                        
                         <td>
-                             <button class="btn btn-warning btn-xs btn-detail edit-nomodal" value="{{$users->uuid}}">Edit nomodal</button>
-                            <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$users->uuid}}">Edit</button>
-                            <button class="btn btn-danger btn-xs btn-delete delete-user" value="{{$users->uuid}}">Delete</button>
+                             <button class="btn btn-warning btn-xs btn-detail edit-nomodal" value="{{$user->uuid}}">Edit nomodal</button>
+                            <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$user->uuid}}">Edit</button>
+                            <button class="btn btn-danger btn-xs btn-delete delete-user" value="{{$user->uuid}}">Delete</button>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
+                
             </table>
-            <!-- End of Table-to-load-the-data Part -->
+            <tr colspan="4">
+                    <div class='pagination'>{!! str_replace('/?','?', $users->render()) !!}</div>
+                </tr>
+            <!-- 
+
+    overriding the $users variable in the foreach is forbidden. Use it as singular form in the foreach
+
+
+                End of Table-to-load-the-data Part -->
              @include('user/form-modal')
         </div>
     </div>
